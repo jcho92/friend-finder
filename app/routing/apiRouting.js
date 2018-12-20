@@ -16,11 +16,10 @@ module.exports = function(app){
         }
         //user score data
         var userScore = 0
-        console.log(newcharacter.scores)
-        console.log(Math.abs(parseInt(newcharacter.scores)))
         
+        //runs through the array of scores of the new character
         for(i=0; i<newcharacter.scores.length; i++){
-            console.log(newcharacter.scores[i])
+           
             userScore += Math.abs(parseInt(newcharacter.scores[i]))
            
         }
@@ -28,13 +27,10 @@ module.exports = function(app){
         console.log(userScore)
         // runs through current data array
         for (i=0;i<friendList.length; i++){
-            console.log(friendList[i].scores);
+          
             var friendlyness = 0;
             for(j=0; j<friendList[i].scores.length; j++){
-                console.log(j)
                 friendlyness += Math.abs(parseInt(friendList[i].scores[j]))
-                console.log(friendlyness)
-                
             }
             var compatability = Math.abs(parseInt(friendlyness - userScore));
             if (compatability <= yourbuddy.bestfriend){
@@ -44,7 +40,7 @@ module.exports = function(app){
             }
 
         }
-        console.log(yourbuddy)
+        
         friendList.push(newcharacter);
         res.json(yourbuddy);
 

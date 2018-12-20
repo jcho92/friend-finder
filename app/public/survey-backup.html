@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>survey</title>
+
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="./reset.css">
+    <link rel="stylesheet" type="text/css" href="./main.css">
+    <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class ="header">
+        <div>
+            <h1>Warhammer Adventure Buddy</h1>
+
+        </div>
+
+
+    </div>
+    <div class="main-body">
+    <form class="form">
+        <div class="questionDiv">
+            <h3>what is your name</h3>
+            <input type="text" id="name">
+        </div>
+        <div class="questionDiv">
+            <h3>upload your image</h3>
+            <input type="text" id="image">
+        </div>
+        <div class="questionDiv">
+            <h3>how diplomatic are you?</h3>
+            <select name="question" id="q1">
+                <option></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="questionDiv">
+            <h3>how much do you like hammers</h3>
+            <select name="question" id="q2">
+                <option></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="questionDiv">
+            <h3>How much do you like fighting</h3>
+            <select name="question" id="q3">
+                <option></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="questionDiv">
+            <h3>do you hold grudges?</h3>
+            <select name="question" id="q4">
+                <option></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="questionDiv">
+            <h3>How arrogant are you?</h3>
+            <select name="question" id="q5">
+                <option></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="questionDiv">
+            <h3>Do you like hanging around the grave yard</h3>
+            <select name="question" id="q6">
+                <option></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="questionDiv">
+            <h3>Do you like getting lost in the forest</h3>
+            <select name="question" id="q7">
+                <option></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="questionDiv">
+            <h3>Do you like animals?</h3>
+            <select name="question" id="q8">
+                <option></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="questionDiv">
+            <h3>How awesome are dinosaurs</h3>
+            <select name="question" id="q9">
+                <option></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="questionDiv">
+            <h3>would you betray your friends for money?</h3>
+            <select name="question" id="q10">
+                <option></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+
+        <button type="button" class="submit" id="submit">Submit</button>
+    </form>
+</div>
+
+
+    <!-- modal-->
+    <div class="modal" style="display:none">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="buddy-modal">
+                <div class="modal-header">
+                    <button type="button" class="close">&times;</button>
+                    
+                </div>
+                <div class="modal-main-body">
+                    <h2>Here is your buddy</h2>
+                    <h2 id="buddy-name"></h2>
+                    <img id="buddy-img" src="">
+                </div>
+               
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        var answerArray = []
+        $('#submit').on("click", function () {
+            for (i = 1; i < 11; i++) {
+                answerArray.push(parseInt($('#q' + i).val().substring(0, 1)));
+            }
+
+
+            var friendData = {
+                name: $("#name").val(),
+                photo: $("#image").val(),
+                scores: answerArray
+            }
+            $.post("/api/friends", friendData)
+                .then(function (data) {
+                    $("#buddy-name").text(data.name);
+                    $("#buddy-img").attr("src", data.photo);
+                    // Show the modal with the best match
+
+                       $(".modal").toggle();
+
+                });
+        
+
+        })
+
+        $(".close").on("click", function(){
+            $(".modal").toggle();
+        })
+
+    </script>
+</body>
+
+</html>

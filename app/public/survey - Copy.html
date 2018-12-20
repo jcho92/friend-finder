@@ -171,73 +171,52 @@
 
     <script>
         var answerArray = []
-        var valid = true
-        $('#submit').on("click", function (validation) {
-
-
-            if ($('#name').val() == "") {
+        $('#submit').on("click", function () {
+           
+            if($('#name').val() == ""){
                 alert("fill in your name")
-                valid = false;
-            }else{
-                valid = true;
+            
             }
-
-            if ($('#image').val() == "") {
+            
+            if ($('#image').val() == ""){
                 alert("image url cannot be empty")
-                valid = false
-            }else{
-                valid = true
+                
             }
-
-            if (($('#name').val() != "") && ($('#image').val() != "")) {
-                for (i = 1; i < 11; i++) {
-                    if (($('#q' + i).val() == "")) {
-                        alert('please fill question' + i)
-                        valid = false
-                        break;
-                    }
-                    else {
-                        valid = true
-                    }
-
-                }
-            }
-            validation(valid)
-
-            function validation(valid) {
-                console.log(valid)
-                if (valid == true) {
-                    submit()
-                }
-
-            }
-        })
-
-
-
-        function submit() {
-
+            
+            if (($('#name').val() != "") && ($('#image').val() !="")) {
             for (i = 1; i < 11; i++) {
-                answerArray.push(parseInt($('#q' + i).val().substring(0, 1)));
+                if (($('#q' + i).val() == "")) {
+                    alert('please fill question' + i)
+                    break;
+                }
             }
-
-            var friendData = {
-                name: $("#name").val(),
-                photo: $("#image").val(),
-                scores: answerArray
-            }
-            $.post("/api/friends", friendData)
-                .then(function (data) {
-                    $("#buddy-name").text(data.name);
-                    $("#buddy-img").attr("src", data.photo);
-                    // Show the modal with the best match
-
-                    $(".modal").toggle();
-
-                });
-
+            submit()
         }
-               
+
+
+                function submit() {
+
+                    for (i = 1; i < 11; i++) {
+                        answerArray.push(parseInt($('#q' + i).val().substring(0, 1)));
+                    }
+
+                    var friendData = {
+                        name: $("#name").val(),
+                        photo: $("#image").val(),
+                        scores: answerArray
+                    }
+                    $.post("/api/friends", friendData)
+                        .then(function (data) {
+                            $("#buddy-name").text(data.name);
+                            $("#buddy-img").attr("src", data.photo);
+                            // Show the modal with the best match
+
+                            $(".modal").toggle();
+
+                        });
+
+                }
+            })
 
         $(".close").on("click", function () {
             $(".modal").toggle();
