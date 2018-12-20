@@ -102,3 +102,9 @@ input{
 #buddy-img{
     border: solid 1px #FDB825;
 }
+p{
+    color: white;
+}
+.footer{
+    text-align: center;
+}

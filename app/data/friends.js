@@ -33,42 +33,7 @@ var friends = [
 		name: 'Ungrim Ironfist',
 		photo: 'https://vignette.wikia.nocookie.net/total-war-warhammer/images/1/14/Ungrim_bg.png/revision/latest?cb=20171009203942',
 		scores: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    },
-    {
-		name: 'Grimgore Ironhide',
-		photo: 'https://vignette.wikia.nocookie.net/total-war-warhammer/images/1/14/Ungrim_bg.png/revision/latest?cb=20171009203942',
-		scores: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    },
-    {
-		name: 'Skarsnik',
-		photo: 'https://vignette.wikia.nocookie.net/total-war-warhammer/images/1/14/Ungrim_bg.png/revision/latest?cb=20171009203942',
-		scores: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    },
-    {
-		name: 'Azhag the slaughterer',
-		photo: 'https://vignette.wikia.nocookie.net/total-war-warhammer/images/1/14/Ungrim_bg.png/revision/latest?cb=20171009203942',
-		scores: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    },
-    {
-		name: 'wurrzag',
-		photo: 'https://vignette.wikia.nocookie.net/total-war-warhammer/images/1/14/Ungrim_bg.png/revision/latest?cb=20171009203942',
-		scores: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    },
-    {
-		name: 'Mannfred Von Carstein',
-		photo: 'https://vignette.wikia.nocookie.net/total-war-warhammer/images/1/14/Ungrim_bg.png/revision/latest?cb=20171009203942',
-		scores: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    },
-    {
-		name: 'Heinrich Kemmler',
-		photo: 'https://vignette.wikia.nocookie.net/total-war-warhammer/images/1/14/Ungrim_bg.png/revision/latest?cb=20171009203942',
-		scores: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    },
-    {
-		name: 'Helman Ghorst',
-		photo: 'https://vignette.wikia.nocookie.net/total-war-warhammer/images/1/14/Ungrim_bg.png/revision/latest?cb=20171009203942',
-		scores: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    },
+    }
 ];
 
 module.exports = friends;
